@@ -1,0 +1,22 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+project1,org.example.mapper,CourseMapperImpl,4,62,3,3,2,16,3,3,0,3
+project1,org.example.mapper,AuthorMapperImpl,4,45,2,2,2,13,2,3,0,3
+project1,org.example.controller,AuthorController,0,23,0,0,0,7,0,3,0,3
+project1,org.example.controller,CourseController,0,63,0,0,0,17,0,7,0,7
+project1,org.example.exception,AuthorNotFoundException,0,4,0,0,0,2,0,1,0,1
+project1,org.example.exception,CourseNotFoundException,0,4,0,0,0,2,0,1,0,1
+project1,org.example.exception,ExceptionHandlerClass,5,13,0,0,1,3,1,3,1,3
+project1,org.example.filter,CustomFilter,71,6,8,0,16,3,6,1,2,1
+project1,org.example.filter,AdminAuthentication,27,0,0,0,8,0,8,0,8,0
+project1,org.example.dtos,RatingDto,4,0,0,0,1,0,1,0,1,0
+project1,org.example.dtos,CourseDto,0,4,0,0,0,1,0,1,0,1
+project1,org.example.services,AuthorService,5,38,0,0,0,11,1,3,1,3
+project1,org.example.services,CourseServiceJDBC,54,6,0,0,13,3,4,1,4,1
+project1,org.example.services,CourseService,15,109,3,3,3,23,3,6,0,6
+project1,org.example.config,CourseRecommenderConfig,4,15,0,0,1,4,1,4,1,4
+project1,org.example.config,SecurityConfig,0,84,0,0,0,13,0,3,0,3
+project1,org.example.repository,CourseRepositoryJDBC,133,20,0,0,24,8,6,3,6,3
+project1,org.example.repository,CourseRepositoryJDBC.new RowMapper() {...},29,0,0,0,7,0,2,0,2,0
+project1,org.example,Application,5,3,0,0,2,1,1,1,1,1
+project1,org.example.services.impl,CourseRecommenderImpl3,0,37,0,0,0,7,0,3,0,3
+project1,org.example.services.impl,CourseRecommenderImpl1,0,33,0,0,0,5,0,2,0,2

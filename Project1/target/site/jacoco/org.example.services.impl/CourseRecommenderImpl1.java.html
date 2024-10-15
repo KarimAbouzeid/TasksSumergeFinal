@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CourseRecommenderImpl1.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project1</a> &gt; <a href="index.source.html" class="el_package">org.example.services.impl</a> &gt; <span class="el_source">CourseRecommenderImpl1.java</span></div><h1>CourseRecommenderImpl1.java</h1><pre class="source lang-java linenums">package org.example.services.impl;
+
+import org.example.Course;
+import org.example.CourseRecommender;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+import java.util.Arrays;
+import java.util.List;
+
+<span class="fc" id="L10">public class CourseRecommenderImpl1 implements CourseRecommender {</span>
+    @Override
+    @Qualifier(&quot;CourseRecommenderImpl1&quot;)
+    public List&lt;Course&gt; recommendedCourses() {
+<span class="fc" id="L14">        Course c1 = new Course(1, &quot;ADSA&quot;, &quot;ADSA Course&quot;, 4);</span>
+<span class="fc" id="L15">        Course c2 = new Course(2, &quot;Scalable&quot;, &quot;Scalable Course&quot;, 5);</span>
+<span class="fc" id="L16">        Course[] arr = {c1, c2};</span>
+<span class="fc" id="L17">        return Arrays.asList(arr);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

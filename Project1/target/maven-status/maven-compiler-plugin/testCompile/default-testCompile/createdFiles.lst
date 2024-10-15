@@ -1,0 +1,9 @@
+org\example\mapstruct\AuthorMapperTests.class
+org\example\mapstruct\CourseMapperTests.class
+org\example\services\AuthorServiceTests.class
+org\example\controller\CourseControllerTests.class
+org\example\services\CourseServiceTests.class
+org\example\exceptions\ExceptionTesting.class
+org\example\ApplicationTests.class
+org\example\controller\AuthorControllerTests.class
+org\example\interfaces\impl\CourseRecommenderTests.class

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AuthorMapperImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project1</a> &gt; <a href="index.source.html" class="el_package">org.example.mapper</a> &gt; <span class="el_source">AuthorMapperImpl.java</span></div><h1>AuthorMapperImpl.java</h1><pre class="source lang-java linenums">package org.example.mapper;
+
+import javax.annotation.processing.Generated;
+import org.example.dtos.AuthorDto;
+import org.example.entities.Author;
+
+@Generated(
+    value = &quot;org.mapstruct.ap.MappingProcessor&quot;,
+    date = &quot;2024-10-15T23:53:21+0300&quot;,
+    comments = &quot;version: 1.6.0, compiler: javac, environment: Java 21.0.4 (Oracle Corporation)&quot;
+)
+<span class="fc" id="L12">public class AuthorMapperImpl implements AuthorMapper {</span>
+
+    @Override
+    public AuthorDto authorToAuthorDto(Author author) {
+<span class="pc bpc" id="L16" title="1 of 2 branches missed.">        if ( author == null ) {</span>
+<span class="nc" id="L17">            return null;</span>
+        }
+
+<span class="fc" id="L20">        AuthorDto.AuthorDtoBuilder authorDto = AuthorDto.builder();</span>
+
+<span class="fc" id="L22">        authorDto.name( author.getName() );</span>
+<span class="fc" id="L23">        authorDto.email( author.getEmail() );</span>
+<span class="fc" id="L24">        authorDto.dateOfBirth( author.getDateOfBirth() );</span>
+
+<span class="fc" id="L26">        return authorDto.build();</span>
+    }
+
+    @Override
+    public Author authorDtoToAuthor(AuthorDto authorDto) {
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">        if ( authorDto == null ) {</span>
+<span class="nc" id="L32">            return null;</span>
+        }
+
+<span class="fc" id="L35">        Author author = new Author();</span>
+
+<span class="fc" id="L37">        author.setName( authorDto.getName() );</span>
+<span class="fc" id="L38">        author.setEmail( authorDto.getEmail() );</span>
+<span class="fc" id="L39">        author.setDateOfBirth( authorDto.getDateOfBirth() );</span>
+
+<span class="fc" id="L41">        return author;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

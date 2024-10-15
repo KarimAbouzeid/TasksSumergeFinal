@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CourseController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project1</a> &gt; <a href="index.source.html" class="el_package">org.example.controller</a> &gt; <span class="el_source">CourseController.java</span></div><h1>CourseController.java</h1><pre class="source lang-java linenums">package org.example.controller;
+
+
+import jakarta.validation.Valid;
+import org.example.dtos.CourseDto;
+import org.example.services.CourseService;
+import org.example.services.CourseServiceJDBC;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping(&quot;/course&quot;)
+public class CourseController {
+
+    private final CourseService courseService;
+    private final CourseServiceJDBC courseServiceJDBC;
+
+    @Autowired
+<span class="fc" id="L24">    public CourseController(CourseService courseService, CourseServiceJDBC courseServiceJDBC) {</span>
+<span class="fc" id="L25">        this.courseService = courseService;</span>
+<span class="fc" id="L26">        this.courseServiceJDBC = courseServiceJDBC;</span>
+<span class="fc" id="L27">    }</span>
+
+
+    @PostMapping(value = &quot;/addCourse/&quot;)
+    public ResponseEntity&lt;CourseDto&gt; addCourse( @Valid @RequestBody CourseDto courseDto) {
+<span class="fc" id="L32">        CourseDto returnedCourse = courseService.addCourse(courseDto);</span>
+<span class="fc" id="L33">        return ResponseEntity.ok(returnedCourse);</span>
+    }
+
+    @PutMapping(value = &quot;/updateCourse/{id}&quot;)
+    public ResponseEntity&lt;CourseDto&gt; updateCourse( @Valid @RequestBody CourseDto courseDto, @PathVariable int id) {
+<span class="fc" id="L38">        CourseDto returnedCourseDto = courseService.updateCourse(id, courseDto);</span>
+<span class="fc" id="L39">        return ResponseEntity.ok(returnedCourseDto);</span>
+
+    }
+    @PutMapping(value = &quot;/updateCourseJDBC/{id}/&quot;)
+    public ResponseEntity&lt;String&gt; updateCourse(@PathVariable(&quot;id&quot;) int id, @RequestBody CourseDto courseDto) {
+
+<span class="fc" id="L45">        courseServiceJDBC.updateCourse(id, courseDto);</span>
+
+<span class="fc" id="L47">        return ResponseEntity.ok(&quot;Course updated&quot;);</span>
+    }
+
+    @GetMapping(value = &quot;/viewCourse/{id}/&quot;)
+    public ResponseEntity&lt;CourseDto&gt; viewCourse(@PathVariable int id) {
+<span class="fc" id="L52">        CourseDto courseDto = courseService.viewCourse(id);</span>
+<span class="fc" id="L53">        return ResponseEntity.ok(courseDto);</span>
+    }
+
+    @DeleteMapping(value = &quot;/deleteCourse/{id}&quot;)
+    public ResponseEntity&lt;String&gt; deleteCourse(@PathVariable int id) {
+<span class="fc" id="L58">        courseService.deleteCourse(id);</span>
+<span class="fc" id="L59">        return ResponseEntity.ok(&quot;Course deleted&quot;);</span>
+    }
+    @GetMapping(&quot;/getRecommendedCourses/&quot;)
+    public ResponseEntity&lt;Page&lt;CourseDto&gt;&gt; getRecommendedCourses(@RequestParam int pageNumber, @RequestParam int pageSize, @RequestParam String[] sort) {
+
+<span class="fc" id="L64">        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(sort));</span>
+<span class="fc" id="L65">        Page&lt;CourseDto&gt; coursesDto = courseService.viewAllCourses(pageable);</span>
+<span class="fc" id="L66">        return ResponseEntity.ok(coursesDto);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

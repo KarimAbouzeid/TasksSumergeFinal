@@ -4,8 +4,11 @@ package org.example.config;
 import org.example.CourseRecommender;
 import org.example.CourseRecommenderImpl2;
 
+import org.example.mapper.AuthorMapper;
+import org.example.mapper.CourseMapper;
 import org.example.services.impl.CourseRecommenderImpl1;
 import org.example.services.impl.CourseRecommenderImpl3;
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +34,14 @@ public class CourseRecommenderConfig {
     }
 
 
+    @Bean
+    public CourseMapper courseMapper(){
+        return Mappers.getMapper(CourseMapper.class);
+    }
 
+    @Bean
+    public AuthorMapper authorMapper(){
+        return Mappers.getMapper(AuthorMapper.class);
+    }
 
 }

@@ -5,7 +5,6 @@ import org.example.exception.AuthorNotFoundException;
 import org.example.dtos.AuthorDto;
 import org.example.entities.Author;
 import org.example.filter.mapper.AuthorMapper;
-import org.example.repository.AuthorRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

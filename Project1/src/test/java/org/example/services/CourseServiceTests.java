@@ -4,7 +4,6 @@ import org.example.exception.CourseNotFoundException;
 import org.example.dtos.CourseDto;
 import org.example.entities.Course;
 import org.example.filter.mapper.CourseMapper;
-import org.example.repository.CourseRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

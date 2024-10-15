@@ -5,6 +5,8 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 import org.example.dtos.CourseDto;
 import org.example.entities.Course;
 import org.example.exception.CourseNotFoundException;
+import org.example.services.CourseService;
+import org.example.services.CourseServiceJDBC;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

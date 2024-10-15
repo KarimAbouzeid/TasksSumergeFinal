@@ -3,6 +3,7 @@
 
 import org.example.CourseRecommender;
 import org.example.CourseRecommenderImpl2;
+
 import org.example.mapper.AuthorMapper;
 import org.example.mapper.CourseMapper;
 import org.example.services.impl.CourseRecommenderImpl1;
@@ -14,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 @Configuration
-<span class="fc" id="L17">public class CourseRecommenderConfig {</span>
+<span class="fc" id="L18">public class CourseRecommenderConfig {</span>
 
 
     @Qualifier(&quot;CourseRecommenderImpl1&quot;)
@@ -23,25 +24,25 @@ import org.springframework.context.annotation.Primary;
 
     @Primary
     public CourseRecommender primaryRecommender() {
-<span class="nc" id="L26">        return new CourseRecommenderImpl1();</span>
+<span class="nc" id="L27">        return new CourseRecommenderImpl1();</span>
     }
 
     @Bean(name = &quot;secondaryRecommender&quot;)
 
     public CourseRecommenderImpl2 secondaryRecommender() {
-<span class="fc" id="L32">        return new CourseRecommenderImpl3();</span>
+<span class="fc" id="L33">        return new CourseRecommenderImpl3();</span>
     }
+
 
     @Bean
     public CourseMapper courseMapper(){
-<span class="fc" id="L37">        return Mappers.getMapper(CourseMapper.class);</span>
+<span class="fc" id="L39">        return Mappers.getMapper(CourseMapper.class);</span>
     }
 
     @Bean
     public AuthorMapper authorMapper(){
-<span class="fc" id="L42">        return Mappers.getMapper(AuthorMapper.class);</span>
+<span class="fc" id="L44">        return Mappers.getMapper(AuthorMapper.class);</span>
     }
-
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -4,19 +4,16 @@ import org.example.Course;
 import org.example.CourseRecommender;
 import org.example.dtos.CourseDto;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jdbc.core.JdbcTemplate;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
-
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
 
 @Service
 @ComponentScan(basePackages = {&quot;org.example.interfaces.impl&quot;})
@@ -26,68 +23,68 @@ public class CourseRepositoryJDBC {
     JdbcTemplate jdbcTemplate;
 
 
-<span class="fc" id="L29">    public CourseRepositoryJDBC(@Qualifier(&quot;courseRecommenderImpl3&quot;) CourseRecommender courseRecommender, JdbcTemplate jdbcTemplate) {</span>
-<span class="fc" id="L30">        this.courseRecommender = courseRecommender;</span>
-<span class="fc" id="L31">        this.jdbcTemplate = jdbcTemplate;</span>
-<span class="fc" id="L32">    }</span>
+<span class="fc" id="L26">    public CourseRepositoryJDBC(@Qualifier(&quot;courseRecommenderImpl3&quot;) CourseRecommender courseRecommender, JdbcTemplate jdbcTemplate) {</span>
+<span class="fc" id="L27">        this.courseRecommender = courseRecommender;</span>
+<span class="fc" id="L28">        this.jdbcTemplate = jdbcTemplate;</span>
+<span class="fc" id="L29">    }</span>
 
     @Autowired
     public void setDataSource(DataSource dataSource) {
-<span class="fc" id="L36">        this.jdbcTemplate = new JdbcTemplate(dataSource);</span>
-<span class="fc" id="L37">    }</span>
+<span class="fc" id="L33">        this.jdbcTemplate = new JdbcTemplate(dataSource);</span>
+<span class="fc" id="L34">    }</span>
 
     @Autowired
     public void setCourseRecommender(CourseRecommender courseRecommender) {
-<span class="fc" id="L41">        this.courseRecommender = courseRecommender;</span>
-<span class="fc" id="L42">    }</span>
+<span class="fc" id="L38">        this.courseRecommender = courseRecommender;</span>
+<span class="fc" id="L39">    }</span>
 
     public void addCourse (int id, String name, String description, int credits){
-<span class="nc" id="L45">        String sql = &quot;INSERT INTO course(id, name, description, credits) VALUES (?, ?, ?, ?)&quot;;</span>
-<span class="nc" id="L46">        jdbcTemplate.update(sql, id, name, description, credits);</span>
-<span class="nc" id="L47">    }</span>
+<span class="nc" id="L42">        String sql = &quot;INSERT INTO course(id, name, description, credits) VALUES (?, ?, ?, ?)&quot;;</span>
+<span class="nc" id="L43">        jdbcTemplate.update(sql, id, name, description, credits);</span>
+<span class="nc" id="L44">    }</span>
 
     public void updateCourse (int id, CourseDto courseDto){
         String name;
         String description;
         int credits;
-<span class="nc" id="L53">        name = courseDto.getName();</span>
-<span class="nc" id="L54">        description = courseDto.getDescription();</span>
-<span class="nc" id="L55">        credits = courseDto.getCredits();</span>
-<span class="nc" id="L56">        String sql = &quot;UPDATE course SET name = ?, description = ?, credits = ? WHERE id = ?&quot;;</span>
-<span class="nc" id="L57">        jdbcTemplate.update(sql, name, description, credits, id);</span>
+<span class="nc" id="L50">        name = courseDto.getName();</span>
+<span class="nc" id="L51">        description = courseDto.getDescription();</span>
+<span class="nc" id="L52">        credits = courseDto.getCredits();</span>
+<span class="nc" id="L53">        String sql = &quot;UPDATE course SET name = ?, description = ?, credits = ? WHERE id = ?&quot;;</span>
+<span class="nc" id="L54">        jdbcTemplate.update(sql, name, description, credits, id);</span>
 
-<span class="nc" id="L59">    }</span>
+<span class="nc" id="L56">    }</span>
 
     public Course viewCourse (int id){
-<span class="nc" id="L62">        String sql = &quot;SELECT * FROM course WHERE id = ?&quot;;</span>
-<span class="nc" id="L63">        return jdbcTemplate.queryForObject(sql,</span>
-<span class="nc" id="L64">                (rs, rowNum)-&gt; new Course(</span>
-<span class="nc" id="L65">                        rs.getInt(&quot;id&quot;),</span>
-<span class="nc" id="L66">                        rs.getString(&quot;name&quot;),</span>
-<span class="nc" id="L67">                        rs.getString(&quot;description&quot;),</span>
-<span class="nc" id="L68">                        rs.getInt(&quot;credits&quot;)</span>
-<span class="nc" id="L69">                ), id);</span>
+<span class="nc" id="L59">        String sql = &quot;SELECT * FROM course WHERE id = ?&quot;;</span>
+<span class="nc" id="L60">        return jdbcTemplate.queryForObject(sql,</span>
+<span class="nc" id="L61">                (rs, rowNum)-&gt; new Course(</span>
+<span class="nc" id="L62">                        rs.getInt(&quot;id&quot;),</span>
+<span class="nc" id="L63">                        rs.getString(&quot;name&quot;),</span>
+<span class="nc" id="L64">                        rs.getString(&quot;description&quot;),</span>
+<span class="nc" id="L65">                        rs.getInt(&quot;credits&quot;)</span>
+<span class="nc" id="L66">                ), id);</span>
     }
 
     public void deleteCourse (int id){
-<span class="nc" id="L73">        String sql = &quot;DELETE FROM course WHERE id = ?&quot;;</span>
-<span class="nc" id="L74">        jdbcTemplate.update(sql, id);</span>
-<span class="nc" id="L75">    }</span>
+<span class="nc" id="L70">        String sql = &quot;DELETE FROM course WHERE id = ?&quot;;</span>
+<span class="nc" id="L71">        jdbcTemplate.update(sql, id);</span>
+<span class="nc" id="L72">    }</span>
 
     public List&lt;Course&gt; getRecommendedCourses(int num){
-<span class="nc" id="L78">        String sql = &quot;SELECT * FROM course ORDER BY id LIMIT ?&quot;;</span>
-<span class="nc" id="L79">        List &lt;Course&gt; courses = jdbcTemplate.query(sql, new RowMapper&lt;Course&gt;() {</span>
+<span class="nc" id="L75">        String sql = &quot;SELECT * FROM course ORDER BY id LIMIT ?&quot;;</span>
+<span class="nc" id="L76">        List &lt;Course&gt; courses = jdbcTemplate.query(sql, new RowMapper&lt;Course&gt;() {</span>
             @Override
             public Course mapRow(ResultSet rs, int rowNum) throws SQLException {
-<span class="nc" id="L82">                Course course = new Course();</span>
-<span class="nc" id="L83">                course.setId(rs.getInt(&quot;id&quot;));</span>
-<span class="nc" id="L84">                course.setName(rs.getString(&quot;name&quot;));</span>
-<span class="nc" id="L85">                course.setDescription(rs.getString(&quot;description&quot;));</span>
-<span class="nc" id="L86">                course.setCredits(rs.getInt(&quot;credits&quot;));</span>
-<span class="nc" id="L87">                return course;</span>
+<span class="nc" id="L79">                Course course = new Course();</span>
+<span class="nc" id="L80">                course.setId(rs.getInt(&quot;id&quot;));</span>
+<span class="nc" id="L81">                course.setName(rs.getString(&quot;name&quot;));</span>
+<span class="nc" id="L82">                course.setDescription(rs.getString(&quot;description&quot;));</span>
+<span class="nc" id="L83">                course.setCredits(rs.getInt(&quot;credits&quot;));</span>
+<span class="nc" id="L84">                return course;</span>
             }
-<span class="nc" id="L89">        }, num);</span>
-<span class="nc" id="L90">        return courses;</span>
+<span class="nc" id="L86">        }, num);</span>
+<span class="nc" id="L87">        return courses;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

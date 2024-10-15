@@ -3,7 +3,7 @@ package org.example.services;
 import org.example.dtos.CourseDto;
 import org.example.entities.Course;
 import org.example.exception.CourseNotFoundException;
-import org.example.filter.mapper.CourseMapper;
+import org.example.mapper.CourseMapper;
 import org.example.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;

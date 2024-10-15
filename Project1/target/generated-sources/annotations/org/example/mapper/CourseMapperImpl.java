@@ -1,4 +1,4 @@
-package org.example.filter.mapper;
+package org.example.mapper;
 
 import javax.annotation.processing.Generated;
 import org.example.dtos.CourseDto;
@@ -6,7 +6,7 @@ import org.example.entities.Course;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-10-16T00:53:29+0300",
+    date = "2024-10-16T01:34:48+0300",
     comments = "version: 1.6.0, compiler: javac, environment: Java 21.0.4 (Oracle Corporation)"
 )
 public class CourseMapperImpl implements CourseMapper {

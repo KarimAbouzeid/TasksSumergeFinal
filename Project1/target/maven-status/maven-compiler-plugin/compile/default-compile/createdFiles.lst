@@ -27,8 +27,5 @@ org\example\repository\AuthorRepository.class
 org\example\dtos\CourseDto.class
 org\example\entities\Course.class
 org\example\exception\AuthorNotFoundException.class
-org\example\filter\CustomFilter.class
-org\example\filter\AdminAuthentication.class
 org\example\mapper\AuthorMapper.class
-org\example\config\SecurityConfig.class
 org\example\dtos\CourseDto$CourseDtoBuilder.class

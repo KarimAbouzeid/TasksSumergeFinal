@@ -2,7 +2,7 @@ package org.example.mapstruct;
 
 import org.example.dtos.AuthorDto;
 import org.example.entities.Author;
-import org.example.filter.mapper.AuthorMapper;
+import org.example.mapper.AuthorMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -3,7 +3,7 @@ package org.example.services;
 import org.example.dtos.AuthorDto;
 import org.example.entities.Author;
 import org.example.exception.AuthorNotFoundException;
-import org.example.filter.mapper.AuthorMapper;
+import org.example.mapper.AuthorMapper;
 import org.example.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;

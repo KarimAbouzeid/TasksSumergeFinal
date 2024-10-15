@@ -5,7 +5,6 @@ import org.example.entities.Course;
 import org.example.exception.CourseNotFoundException;
 import org.example.mapper.CourseMapper;
 import org.example.repository.CourseRepository;
-import org.example.repository.CourseRepositoryJDBC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.domain.Page;
@@ -21,53 +20,53 @@ public class CourseService {
     private final CourseMapper courseMapper;
 
     @Autowired
-<span class="fc" id="L24">    public CourseService(CourseRepository courseRepository, CourseMapper courseMapper) {</span>
-<span class="fc" id="L25">        this.courseRepository = courseRepository;</span>
-<span class="fc" id="L26">        this.courseMapper = courseMapper;</span>
-<span class="fc" id="L27">    }</span>
+<span class="fc" id="L23">    public CourseService(CourseRepository courseRepository, CourseMapper courseMapper) {</span>
+<span class="fc" id="L24">        this.courseRepository = courseRepository;</span>
+<span class="fc" id="L25">        this.courseMapper = courseMapper;</span>
+<span class="fc" id="L26">    }</span>
 
     public CourseDto viewCourse(int id) {
 
-<span class="pc bpc" id="L31" title="1 of 2 branches missed.">        if(courseRepository.findById(id).isEmpty()){</span>
-<span class="nc" id="L32">            throw new CourseNotFoundException(&quot;Course not found&quot;);</span>
+<span class="pc bpc" id="L30" title="1 of 2 branches missed.">        if(courseRepository.findById(id).isEmpty()){</span>
+<span class="nc" id="L31">            throw new CourseNotFoundException(&quot;Course not found&quot;);</span>
         }
-<span class="fc" id="L34">        Course course = courseRepository.findById(id).get();</span>
-<span class="fc" id="L35">        return courseMapper.courseToCourseDto(course);</span>
+<span class="fc" id="L33">        Course course = courseRepository.findById(id).get();</span>
+<span class="fc" id="L34">        return courseMapper.courseToCourseDto(course);</span>
     }
 
     public CourseDto addCourse(CourseDto courseDto){
-<span class="fc" id="L39">        Course course = courseMapper.courseDtoToCourse(courseDto);</span>
-<span class="fc" id="L40">        Course returnedCourse = courseRepository.save(course);</span>
-<span class="fc" id="L41">        return courseMapper.courseToCourseDto(returnedCourse);</span>
+<span class="fc" id="L38">        Course course = courseMapper.courseDtoToCourse(courseDto);</span>
+<span class="fc" id="L39">        Course returnedCourse = courseRepository.save(course);</span>
+<span class="fc" id="L40">        return courseMapper.courseToCourseDto(returnedCourse);</span>
     }
 
     public CourseDto updateCourse(int id, CourseDto courseDto){
 
-<span class="pc bpc" id="L46" title="1 of 2 branches missed.">        if(courseRepository.findById(id).isEmpty()){</span>
-<span class="nc" id="L47">            throw new CourseNotFoundException(&quot;Course not found&quot;);</span>
+<span class="pc bpc" id="L45" title="1 of 2 branches missed.">        if(courseRepository.findById(id).isEmpty()){</span>
+<span class="nc" id="L46">            throw new CourseNotFoundException(&quot;Course not found&quot;);</span>
         }
-<span class="fc" id="L49">        Course course = courseRepository.findById(id).get();</span>
-<span class="fc" id="L50">        course.setName(courseDto.getName());</span>
-<span class="fc" id="L51">        course.setDescription(courseDto.getDescription());</span>
-<span class="fc" id="L52">        course.setCredits(courseDto.getCredits());</span>
-<span class="fc" id="L53">        Course c2 = courseRepository.save(course);</span>
-<span class="fc" id="L54">        return courseMapper.courseToCourseDto(c2);</span>
+<span class="fc" id="L48">        Course course = courseRepository.findById(id).get();</span>
+<span class="fc" id="L49">        course.setName(courseDto.getName());</span>
+<span class="fc" id="L50">        course.setDescription(courseDto.getDescription());</span>
+<span class="fc" id="L51">        course.setCredits(courseDto.getCredits());</span>
+<span class="fc" id="L52">        Course c2 = courseRepository.save(course);</span>
+<span class="fc" id="L53">        return courseMapper.courseToCourseDto(c2);</span>
 
     }
 
 
     public void deleteCourse(int id) {
-<span class="pc bpc" id="L60" title="1 of 2 branches missed.">        if(courseRepository.findById(id).isEmpty()){</span>
-<span class="nc" id="L61">            throw new CourseNotFoundException(&quot;Course not found&quot;);</span>
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">        if(courseRepository.findById(id).isEmpty()){</span>
+<span class="nc" id="L60">            throw new CourseNotFoundException(&quot;Course not found&quot;);</span>
         }
-<span class="fc" id="L63">        courseRepository.deleteById(id);</span>
-<span class="fc" id="L64">    }</span>
+<span class="fc" id="L62">        courseRepository.deleteById(id);</span>
+<span class="fc" id="L63">    }</span>
 
     public Page&lt;CourseDto&gt; viewAllCourses(Pageable pageable) {
 
-<span class="fc" id="L68">        return courseRepository</span>
-<span class="fc" id="L69">                .findAll(pageable)</span>
-<span class="fc" id="L70">                .map(courseMapper::courseToCourseDto);</span>
+<span class="fc" id="L67">        return courseRepository</span>
+<span class="fc" id="L68">                .findAll(pageable)</span>
+<span class="fc" id="L69">                .map(courseMapper::courseToCourseDto);</span>
 
     }
 

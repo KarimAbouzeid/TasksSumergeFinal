@@ -1,7 +1,7 @@
 package org.example.config;
 
 
-import org.example.filter.CustomFilter;
+import org.example.security.CustomFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
